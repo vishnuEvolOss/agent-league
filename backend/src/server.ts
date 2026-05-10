@@ -15,7 +15,14 @@ const app = express();
 const port = process.env.PORT || 10000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://agent-league.onrender.com',
+    'http://localhost:5173',
+    'http://localhost:3001'
+  ],
+  credentials: true
+}));
 app.use(bodyParser.json());
 
 // Initialize backend service

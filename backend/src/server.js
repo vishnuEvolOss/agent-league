@@ -49,8 +49,15 @@ dotenv.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 10000;
 // Middleware
-app.use((0, cors_1.default)());
-app.use(body_parser_1.default.json());
+app.use((0, cors_1.default)({
+  origin: [
+    'https://agent-league.onrender.com',
+    'http://localhost:5173',
+    'http://localhost:3001'
+  ],
+  credentials: true
+}));
+app.use((0, body_parser_1.default)().json());
 // Initialize backend service
 const backend = new index_1.AgentLeagueBackend();
 // Register some demo agents
